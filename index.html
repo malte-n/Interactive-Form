@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Register for Full Stack Conf</title>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/generic.css" />
+  <link rel="stylesheet" type="text/css" href="css/style-dropdown.css" />
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<div class="container">
@@ -27,7 +29,7 @@
         <input type="email" id="mail" name="user_email">
 
         <label>Job Role</label>
-        <select id="title" name="user_title">
+        <select id="title" name="user_title" class="turnintodropdown">
           <option value="full-stack js developer">Full Stack JavaScript Developer</option>
           <option value="front-end developer">Front End Developer</option>
           <option value="back-end developer">Back End Developer</option>
@@ -151,6 +153,7 @@
 
 	</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script type='text/javascript' src='js/select.js'></script>
   <script src="js/mean.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

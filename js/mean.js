@@ -1,21 +1,20 @@
 (function(){
   $('#colors-js-puns').hide();
   $("#credit-card").hide().siblings().not("#payment").hide().not("#payment").parent().children().first().show();
-  //Make sure you add an text input field.
+  $('#other-title').hide();
 
   // The first text field should be selected when the page loads.
   $("#name").focus();
 
   var optionSelected;
-  $('#title[value="other"').on("change", function() {
+  $('#title').on("change", function() {
     optionSelected = $("#title").val();
     //Use the id of "other-title" for the field
     //Add placeholder text of "Your Title" for the field
-    var otherTitleField = '<input type="text" id="other-title" placeholder="Your Title">';
     if (optionSelected === "other"){
-      $('form').find('fieldset').first().append(otherTitleField);
+      $('#other-title').show();
     } else {
-      $('#other-title').remove();
+      $('#other-title').hide();
     }
   });
 
@@ -91,9 +90,8 @@
 
   //When a user selects the "Credit Card" payment option, display the #credit-card div, and hide the "Paypal" and "Bitcoin information.
   var paymentOptionSelected = "select_method";
-  function myFunction() {
-    $("#credit-card").hide().siblings().not("#payment").hide().not("#payment").parent().children().first().show();
-
+  function paymentMethod() {
+    $("#credit-card").show().siblings().not("#payment").hide().not("#payment").parent().children().first().show();
     $("#payment").on('change', function(){
       paymentOptionSelected = $(this).val();
 
@@ -107,8 +105,9 @@
         $("#credit-card").hide().siblings().not("#payment").hide().not("#payment").parent().children().first().show();
       }
     });
-  }myFunction();
+  }paymentMethod();
 
+$('#cvv').attr('maxlength', 3);
 
   //register button calls validateInputs
   $("button[type='submit']").on("click", function(e){
@@ -171,7 +170,6 @@
         var credNumCorrect = numRegEx.test(ccNum);
         var zipCorrect = numRegEx.test(zip);
         var cvvCorrect = numRegEx.test(cvv);
-
 
         if (ccNum === ''|| zip === '' || cvv === '' || cvv.length !== 3) {
           $("#payment").siblings().eq(0).after('<label class="ccLabel" style="color: #ec2b45">Please fill out your credit-card credentials correctly</label>');
